@@ -3,7 +3,9 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
+import tailwindcss from 'tailwindcss';
 
+const tailwindConfig = require('./tailwind.config.js');
 const packageJson = require("./package.json");
 
 export default [
@@ -25,7 +27,16 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      postcss(),
+      postcss({
+        config: {
+          path: "./postcss.config.js",
+        },
+        extensions: [".css"],
+        inject:true,
+        extract: true,
+        
+        plugins: [tailwindcss(tailwindConfig)],
+      }),
     ],
   },
   {
