@@ -3,10 +3,12 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
+console.log("🚀 ~ dts:", dts)
 import tailwindcss from "tailwindcss";
 import terser from "@rollup/plugin-terser";
 import url from "@rollup/plugin-url";
-const tailwindConfig = require("./tailwind.config.js");
+import json from "@rollup/plugin-json";
+const tailwindConfig = require("./tailwind.config.cjs");
 const packageJson = require("./package.json");
 
 const dependencies = ({ dependencies }) => Object.keys(dependencies || {});
@@ -41,7 +43,7 @@ export default [
     ],
     plugins: [
       resolve(),
-
+      json(),
       commonjs(),
 
       typescript({
@@ -64,7 +66,7 @@ export default [
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
-    plugins: [dts()],
+    plugins: [dts.dts()],
     external: [/\.(css|less|scss)$/],
   },
 ];
