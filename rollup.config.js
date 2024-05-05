@@ -3,14 +3,30 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
-import tailwindcss from 'tailwindcss';
-
-const tailwindConfig = require('./tailwind.config.js');
+import tailwindcss from "tailwindcss";
+import terser from "@rollup/plugin-terser";
+import url from "@rollup/plugin-url";
+const tailwindConfig = require("./tailwind.config.js");
 const packageJson = require("./package.json");
+
+const dependencies = ({ dependencies }) => Object.keys(dependencies || {});
+
+const pkgdependencies = dependencies(packageJson);
+
+/* exported rollup configuration */
+// const config = {
+//   external: (id) => pkgdependencies.includes(id),
+// };
 
 export default [
   {
     input: "src/index.ts",
+    external: [
+      ...pkgdependencies,
+      "next/image",
+      "next/navigation",
+      "next/router",
+    ],
     output: [
       {
         file: packageJson.main,
@@ -25,18 +41,24 @@ export default [
     ],
     plugins: [
       resolve(),
+
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+
+      typescript({
+        tsconfig: "./tsconfig.json",
+      }),
       postcss({
         config: {
           path: "./postcss.config.js",
         },
         extensions: [".css"],
-        inject:true,
+        inject: true,
         extract: true,
-        
+
         plugins: [tailwindcss(tailwindConfig)],
       }),
+      url(),
+      terser(),
     ],
   },
   {
