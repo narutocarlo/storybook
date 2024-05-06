@@ -1,0 +1,238 @@
+const imgBaseUrl = process.env.IMAGE_BASE_URL;
+const MomentumIndicatorsValue = [
+  {
+    'title': 'Commodity Channel Index (CCI)',
+    'data': [
+      {
+        'label': 'CCI Above 100',
+        'imgPath': imgBaseUrl+'images/advance-stock/CCI-Above-100.svg',
+        'defaultValue': false,
+        'field': 'cci_100_above',
+        'name': 'commodity-channel-index',
+      },
+      {
+        'label': 'CCI Below -100',
+        'imgPath': imgBaseUrl+'images/advance-stock/CCI-Below-100.svg',
+        'defaultValue': false,
+        'field': 'cci_100_below',
+        'name': 'commodity-channel-index',
+      },
+      {
+        'label': 'CCI Above 200',
+        'imgPath': imgBaseUrl+'images/advance-stock/CCI-Above-200.svg',
+        'defaultValue': false,
+        'field': 'cci_200_above',
+        'name': 'commodity-channel-index',
+      },
+      {
+        'label': 'CCI Below -200',
+        'imgPath': imgBaseUrl+'images/advance-stock/CCI-Below-200.svg',
+        'defaultValue': false,
+        'field': 'cci_200_below',
+        'name': 'commodity-channel-index',
+      },
+      {
+        'label': 'CCI Crossed Above 100',
+        'imgPath': imgBaseUrl+'images/advance-stock/CCI-Crossed-Above-100.svg',
+        'defaultValue': false,
+        'field': 'cci_cross_100_above',
+        'name': 'commodity-channel-index',
+      },
+      {
+        'label': 'CCI Crossed Below 100',
+        'imgPath': imgBaseUrl+'images/advance-stock/CCI-Crossed-Below-100.svg',
+        'defaultValue': false,
+        'field': 'cci_cross_100_below',
+        'name': 'commodity-channel-index',
+      },
+      {
+        'label': 'CCI Crossed Above -100',
+        'imgPath': imgBaseUrl+'images/advance-stock/CCI-Crossed-Above--100.svg',
+        'defaultValue': false,
+        'field': 'cci_cross_neg_100_above',
+        'name': 'commodity-channel-index',
+      },
+      {
+        'label': 'CCI Crossed Below -100',
+        'imgPath': imgBaseUrl+'images/advance-stock/CCI-Crossed-Below--100.svg',
+        'defaultValue': false,
+        'field': 'cci_cross_neg_100_below',
+        'name': 'commodity-channel-index',
+      },
+    ],
+  },
+  {
+    'title': 'Relative Strength Index (RSI)',
+    'data': [
+      {
+        'label': 'RSI Crossed Below 30',
+        'imgPath': imgBaseUrl+'images/advance-stock/RSI-Crossed-Below30.svg',
+        'defaultValue': false,
+        'field': 'rsi_cross_30_below',
+        'name': 'relative-strength-index',
+      },
+      {
+        'label': 'RSI Crossed Above 70',
+        'imgPath': imgBaseUrl+'images/advance-stock/RSI-Crossed-Above70.svg',
+        'defaultValue': false,
+        'field': 'rsi_cross_70_above',
+        'name': 'relative-strength-index',
+      },
+      {
+        'label': 'RSI Crossed Below 20',
+        'imgPath': imgBaseUrl+'images/advance-stock/RSI-Crossed-Below20.svg',
+        'defaultValue': false,
+        'field': 'rsi_cross_20_below',
+        'name': 'relative-strength-index',
+      },
+      {
+        'label': 'RSI Crossed Above 80',
+        'imgPath': imgBaseUrl+'images/advance-stock/RSI-Crossed-Above80.svg',
+        'defaultValue': false,
+        'field': 'rsi_cross_80_above',
+        'name': 'relative-strength-index',
+      },
+      {
+        'label': 'RSI Above 70 (2 or more days)',
+        'imgPath': imgBaseUrl+'images/advance-stock/RSI-Crossed-Above-70-2.svg',
+        'defaultValue': false,
+        'field': 'rsi_2_70_above',
+        'name': 'relative-strength-index',
+      },
+      {
+        'label': 'RSI Below 30 (2 or more days)',
+        'imgPath': imgBaseUrl+'images/advance-stock/RSI-Crossed-Below-30-2.svg',
+        'defaultValue': false,
+        'field': 'rsi_2_70_below',
+        'name': 'relative-strength-index',
+      },
+    ],
+  },
+  {
+    'title': 'Moving Average Convergence Divergence (MACD)',
+    'data': [
+      {
+        'label': 'MACD Crossing Signal Line From Below',
+        'imgPath': imgBaseUrl+'images/advance-stock/MACD-Crossing-Below.svg',
+        'defaultValue': false,
+        'field': 'macd_cross_below',
+        'name': 'moving-average-convergence-divergence',
+      },
+      {
+        'label': 'MACD Crossing Signal Line From Above',
+        'imgPath': imgBaseUrl+'images/advance-stock/MACD-Crossing-Below.svg',
+        'defaultValue': false,
+        'field': 'macd_cross_above',
+        'name': 'moving-average-convergence-divergence',
+      },
+      {
+        'label': 'MACD Moving Above Zero',
+        'imgPath': imgBaseUrl+'images/advance-stock/MACD-Moving-Above.svg',
+        'defaultValue': false,
+        'field': 'macd_cross_above_zero',
+        'name': 'moving-average-convergence-divergence',
+      },
+      {
+        'label': 'MACD Moving Below Zero',
+        'imgPath': imgBaseUrl+'images/advance-stock/MACD-Moving-Below.svg',
+        'defaultValue': false,
+        'field': 'macd_cross_below_zero',
+        'name': 'moving-average-convergence-divergence',
+      },
+    ],
+  },
+  {
+    'title': 'Money Flow Index (MFI)',
+    'data': [
+      {
+        'label': 'MFI Above 80',
+        'imgPath': imgBaseUrl+'images/advance-stock/MFI-Above-80.svg',
+        'defaultValue': false,
+        'field': 'mfi_above_80',
+        'name': 'money-flow-index',
+      },
+      {
+        'label': 'MFI Below 20',
+        'imgPath': imgBaseUrl+'images/advance-stock/MFI-Below-20.svg',
+        'defaultValue': false,
+        'field': 'mfi_below_20',
+        'name': 'money-flow-index',
+      },
+      {
+        'label': 'MFI Above 90',
+        'imgPath': imgBaseUrl+'images/advance-stock/MFI-Above-90.svg',
+        'defaultValue': false,
+        'field': 'mfi_above_90',
+        'name': 'money-flow-index',
+      },
+      {
+        'label': 'MFI Below 10',
+        'imgPath': imgBaseUrl+'images/advance-stock/MFI-Below-10.svg',
+        'defaultValue': false,
+        'field': 'mfi_below_10',
+        'name': 'money-flow-index',
+      },
+    ],
+  },
+  {
+    'title': 'Average Directional Index (ADX)',
+    'data': [
+      {
+        'label': 'Strong Uptrend: ADX Between 25 & 50 (with DI+ above DI-)',
+        'imgPath': imgBaseUrl+'images/advance-stock/ADX_Strong-Uptrend.svg',
+        'defaultValue': false,
+        'field': 'up_adx_between_25_50',
+        'name': 'average-directional-index',
+      },
+      {
+        'label': 'Very Strong Uptrend: ADX Above 50 (with DI+ above DI-)',
+        'imgPath': imgBaseUrl+'images/advance-stock/ADX_Very-Strong-Uptrend.svg',
+        'defaultValue': false,
+        'field': 'strong_up_adx_above_50',
+        'name': 'average-directional-index',
+      },
+      {
+        'label': 'Strong Downtrend: ADX Between 25 & 50 (with DI+ below DI-)',
+        'imgPath': imgBaseUrl+'images/advance-stock/ADX_Strong-Downtrend.svg',
+        'defaultValue': false,
+        'field': 'down_adx_between_25_50',
+        'name': 'average-directional-index',
+      },
+      {
+        'label': 'Very Strong Downtrend: ADX Above 50 (with DI+ below DI-)',
+        'imgPath': imgBaseUrl+'images/advance-stock/ADX_Very-Strong-Downtrend.svg',
+        'defaultValue': false,
+        'field': 'strong_down_adx_above_50',
+        'name': 'average-directional-index',
+      },
+      {
+        'label': 'Weak or No Trend: ADX Below 25',
+        'imgPath': imgBaseUrl+'images/advance-stock/ADX_Weak-or-No-Trend-ADX-Below-25.svg',
+        'defaultValue': false,
+        'field': 'adx_below_50',
+        'name': 'average-directional-index',
+      },
+    ],
+  },
+  {
+    'title': 'Super Trend',
+    'data': [
+      {
+        'label': 'Super Trend Signal Changed to Buy',
+        'imgPath': imgBaseUrl+'images/advance-stock/Super-Trend-Buy.svg',
+        'defaultValue': false,
+        'field': 'supr_buy',
+        'name': 'super-trend',
+      },
+      {
+        'label': 'Super Trend Signal Changed to Sell',
+        'imgPath': imgBaseUrl+'images/advance-stock/Super-Trend-Sell.svg',
+        'defaultValue': false,
+        'field': 'supr_sell',
+        'name': 'super-trend',
+      },
+    ],
+  },
+];
+
+export default MomentumIndicatorsValue;

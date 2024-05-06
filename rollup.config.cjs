@@ -3,7 +3,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
-console.log("🚀 ~ dts:", dts)
 import tailwindcss from "tailwindcss";
 import terser from "@rollup/plugin-terser";
 import url from "@rollup/plugin-url";
